@@ -1,0 +1,79 @@
+<nb-layout>
+  <nb-layout-column style="background-color: black" >
+    <!-- Main navigation -->
+<header>
+
+    <!-- Full Page Intro -->
+    <div class="view" style="background-image:url('../../../assets/images/DesertNightLights.gif') ; background-repeat: no-repeat; background-size: cover; background-position: center center;">
+      <!-- Mask & flexbox options-->
+      <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
+        <!-- Content -->
+        <div class="container">
+          <!--Grid row-->
+          <div class="row mt-5">
+            <!--Grid column-->
+            <div class="col-md-6 mb-5 mt-md-0 mt-5 white-text text-center text-md-left">
+              <h1 class="h1-responsive font-weight-bold wow fadeInLeft animated" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeInLeft; animation-delay: 0.3s; color: whitesmoke;">JPBX </h1>
+              <hr class="hr-light wow fadeInLeft animated" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeInLeft; animation-delay: 0.3s;">
+              <h6 class="mb-3 wow fadeInLeft animated" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeInLeft; animation-delay: 0.3s; color: whitesmoke ">
+                Seu PBX IP re-estruturado e repaginado.</h6>
+
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-md-6 col-xl-5 mb-4">
+              <!--Form-->
+            <form [formGroup]="formulario" (ngSubmit)="onSubmit()"  >
+              <div class="card wow fadeInRight animated" data-wow-delay="0.3s" style="visibility: visible; animation-name: fadeInRight; animation-delay: 0.3s;">
+                <div class="card-body">
+                  <!--Header-->
+                  <div class="text-center">
+                    <h3 class="white-text">
+                      <i class="fas fa-lock white-text"></i> Login</h3>
+                    <hr class="hr-light">
+                  </div>
+                  <!--Body-->
+                  <div class="md-form">
+                    <div class="input-group">
+                      <input type="text" nbInput fullWidth placeholder="Usuário" class="form-control" formControlName="name" style="color:gray" >
+                    </div>
+                  </div>
+                  <div class="md-form">
+                    <div class="input-group">
+                      <input type="password" nbInput fullWidth placeholder="Senha" formControlName="password" class="form-control" style="color:gray">
+                    </div>
+                  </div>
+                  <div class="text-center mt-4">
+                    <button nbButton status="primary" class="btn-demo">Entrar</button>
+                    <hr class="hr-light mb-3 mt-4">
+                    <div class="inline-ul text-center d-flex justify-content-center">
+                      <!-- <a class="p-2 m-2 tw-ic">
+                        <i class="fab fa-twitter white-text"></i>
+                      </a> -->
+                      <a class="p-2 m-2 li-ic" href="http://www.linkedin.com/pub/jefferson-alves-reis/61/73/0" target="_blank" >
+                        <i class="fab fa-linkedin-in white-text"> </i>
+                      </a>
+                      <!-- <a class="p-2 m-2 ins-ic">
+                        <i class="fab fa-instagram white-text"> </i>
+                      </a> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+              <!--/.Form-->
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </div>
+        <!-- Content -->
+      </div>
+      <!-- Mask & flexbox options-->
+    </div>
+    <!-- Full Page Intro -->
+  </header>
+  <!-- Main navigation -->
+  </nb-layout-column>
+</nb-layout>
+
