@@ -11,7 +11,6 @@ import { User } from '../model/user';
 export class JpbxService {
 
   private url = 'http://localhost:8080/jpbx3/ws/';
-  private user: User;
   private token = new TokenStore;
 
   constructor(private http: HttpClient) { }
@@ -32,15 +31,4 @@ export class JpbxService {
       })
     });
   }
-
-  public getUser(){
-    return this.user;
-  }
-  public setUser(u: User){
-    this.user = u;
-  }
-  public setToken(t: string){
-    this.token.setToken(t);
-  }
-
 }

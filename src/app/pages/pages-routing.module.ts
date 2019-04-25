@@ -45,14 +45,14 @@ const routes: Routes = [{
   }, {
     path: 'miscellaneous',
     loadChildren: './miscellaneous/miscellaneous.module#MiscellaneousModule',
-  }, 
+  },
   {
     path: 'users',
     loadChildren: './users/users.module#UsersModule'
   },
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'users/users',
     pathMatch: 'full',
   }, {
     path: '**',
