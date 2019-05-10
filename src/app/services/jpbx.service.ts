@@ -2,7 +2,6 @@ import { TokenStore } from './../utils/token-store';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Message } from '../model/message';
-import { User } from '../model/user';
 
 
 @Injectable({
@@ -16,6 +15,7 @@ export class JpbxService {
   constructor(private http: HttpClient) { }
 
   public getServer(page: string) {
+    console.log(page + ' - ' + this.token.getToken());
     return this.http.get<Message>(this.url + page, {
       headers: new HttpHeaders({
         'content-type': 'application/json',
@@ -24,6 +24,7 @@ export class JpbxService {
     });
   }
   public postServer(page: string, data){
+    console.log(page + ' - ' + this.token.getToken());
     return this.http.post<Message>(this.url + page, data, {
       headers: new HttpHeaders({
         'content-type': 'application/json',

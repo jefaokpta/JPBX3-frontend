@@ -10,4 +10,5 @@ export class User {
   fullName: string;
   imgType: string;
   links: string[];
+
 }

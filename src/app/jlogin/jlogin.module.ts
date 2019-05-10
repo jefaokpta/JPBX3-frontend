@@ -18,7 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     ...routedComponents,
     LoginComponent,
-  ],
+  ]
 })
 export class JloginModule { }
 

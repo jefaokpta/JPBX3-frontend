@@ -2,6 +2,7 @@ import { JpbxService } from './../../../services/jpbx.service';
 import { Component, OnInit } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableData } from '../../../@core/data/smart-table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-users-overview',
@@ -53,7 +54,11 @@ export class UsersOverviewComponent implements OnInit {
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableData, private jpbx: JpbxService) {
+  constructor(
+    private service: SmartTableData,
+    private jpbx: JpbxService,
+    private route: Router
+    ) {
     const data = this.service.getData();
     this.source.load(data);
   }
@@ -65,8 +70,12 @@ export class UsersOverviewComponent implements OnInit {
     }
   }
   ngOnInit() {
-    this.jpbx.getServer('login').subscribe(data => {
+    this.jpbx.getServer('user').subscribe(data => {
       console.log(data);
+    },
+    err => {
+      console.log(err);
+      this.route.navigate(['auth']);
     });
   }
 
