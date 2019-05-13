@@ -1,5 +1,3 @@
-import { TokenStore } from './utils/token-store';
-import { JpbxService } from './services/jpbx.service';
 import { JloginModule } from './jlogin/jlogin.module';
 /**
  * @license
