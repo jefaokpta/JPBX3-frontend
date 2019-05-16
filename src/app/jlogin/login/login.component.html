@@ -1,5 +1,4 @@
-<nb-layout>
-  <nb-layout-column style="background-color: black" >
+
     <!-- Main navigation -->
 <header>
 
@@ -62,6 +61,9 @@
               </div>
             </form>
               <!--/.Form-->
+              <div *ngIf="loginError"  class="alert alert-danger" role="alert">
+                {{loginErrorMessage}}
+              </div>
             </div>
             <!--Grid column-->
           </div>
@@ -74,6 +76,4 @@
     <!-- Full Page Intro -->
   </header>
   <!-- Main navigation -->
-  </nb-layout-column>
-</nb-layout>
 

@@ -1,13 +1,12 @@
-import { ToastService } from './../../services/toast.service';
+import { TokenService } from './../../services/token.service';
 import { User } from './../../model/user';
 import { JpbxService } from './../../services/jpbx.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Md5 } from 'ts-md5/dist/md5';
-import { TokenStore } from '../../utils/token-store';
-import { UserStore } from '../../utils/user-store';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'ngx-login',
@@ -17,13 +16,17 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class LoginComponent implements OnInit {
 
   formulario: FormGroup;
-
+  loginError: boolean;
+  loginErrorMessage: string;
   user = new User;
+
 
   constructor(
     private fb: FormBuilder,
     private jpbx: JpbxService,
-    private toast: ToastService
+    private route: Router,
+    private token: TokenService,
+    private userStore: UserService
     ) { }
 
   ngOnInit() {
@@ -38,13 +41,14 @@ export class LoginComponent implements OnInit {
     this.user.name = this.formulario.controls.name.value;
     this.user.password = this.formulario.controls.password.value;
     this.jpbx.postServer('login', this.user).subscribe(res => {
-      new TokenStore().setToken(res.token);
-      new UserStore().setUser(res.data);
-      this.toast.makeToast('SUCESSO', 'opa', 'success');
-      //this.route.navigate(['users']);
+      this.token.setToken(res.token);
+      this.userStore.setUser(res.data);
+      this.route.navigate(['users']);
     },
-    () => {
-      this.toast.makeToast('PORRA ae! ', 'Estou trabalhando pra lançar o quanto antes. Seja paciente.', 'danger' );
+    (err: HttpErrorResponse) => {
+      this.loginErrorMessage = err.error.message;
+      this.loginError = true;
+      console.log(err);
     });
   }
 

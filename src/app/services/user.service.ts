@@ -1,7 +1,12 @@
+import { Injectable } from '@angular/core';
 import { User } from '../model/user';
 
-export class UserStore {
-  private user: User;
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+
+  constructor() { }
 
   public getUser(): User{
     try {

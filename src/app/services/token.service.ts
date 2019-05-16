@@ -1,5 +1,11 @@
+import { Injectable } from '@angular/core';
 
-export class TokenStore {
+@Injectable({
+  providedIn: 'root'
+})
+export class TokenService {
+
+  constructor() { }
 
   public getToken(){
     try {
