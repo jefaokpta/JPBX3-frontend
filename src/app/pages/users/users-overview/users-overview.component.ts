@@ -1,8 +1,9 @@
 import { JpbxService } from './../../../services/jpbx.service';
 import { Component, OnInit } from '@angular/core';
-import { LocalDataSource } from 'ng2-smart-table';
-import { SmartTableData } from '../../../@core/data/smart-table';
+
 import { Router } from '@angular/router';
+import { User } from '../../../model/user';
+import { TokenService } from '../../../services/token.service';
 
 @Component({
   selector: 'ngx-users-overview',
@@ -10,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./users-overview.component.scss']
 })
 export class UsersOverviewComponent implements OnInit {
+
+  users: User[];
 
   settings = {
     actions: {
@@ -33,36 +36,32 @@ export class UsersOverviewComponent implements OnInit {
         title: 'ID',
         type: 'number',
       },
-      firstName: {
+      fullName: {
         title: 'Nome',
         type: 'string',
       },
-      lastName: {
+      name: {
         title: 'Usuário',
         type: 'string',
       },
-      username: {
+      level: {
         title: 'Nível',
-        type: 'string',
+        type: 'number',
       },
-      email: {
+      company: {
         title: 'Empresa',
-        type: 'string',
+        type: 'number',
       },
     },
   };
 
-  source: LocalDataSource = new LocalDataSource();
-
   constructor(
-    private service: SmartTableData,
     private jpbx: JpbxService,
-    private route: Router
-    ) {
-    const data = this.service.getData();
-    this.source.load(data);
-  }
+    private route: Router,
+    private token: TokenService
+    ) {}
   onDeleteConfirm(event): void {
+    console.log(event);
     if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();
     } else {
@@ -71,7 +70,8 @@ export class UsersOverviewComponent implements OnInit {
   }
   ngOnInit() {
     this.jpbx.getServer('user').subscribe(data => {
-      console.log(data);
+      this.token.setToken(data.token);
+      this.users = data.data;
     },
     err => {
       console.log(err);
