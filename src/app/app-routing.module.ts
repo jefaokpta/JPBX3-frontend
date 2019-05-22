@@ -15,6 +15,7 @@ import { LoginComponent } from './jlogin/login/login.component';
 const routes: Routes = [
 
   { path: 'pages', loadChildren: 'app/pages/pages.module#PagesModule' },
+  { path: 'start', loadChildren: 'app/start/start.module#StartModule' },
   {
     path: 'auth',
     component: JloginComponent,
@@ -45,7 +46,7 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
+  { path: '', redirectTo: 'start', pathMatch: 'full' },
   { path: '**', redirectTo: 'pages' },
 ];
 

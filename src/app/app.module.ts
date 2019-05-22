@@ -17,6 +17,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { JloginModule } from './jlogin/jlogin.module';
+import { StartModule } from './start/start.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,7 @@ import { JloginModule } from './jlogin/jlogin.module';
     HttpClientModule,
     AppRoutingModule,
     JloginModule,
+    StartModule,
 
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
