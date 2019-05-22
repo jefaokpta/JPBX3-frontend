@@ -1,3 +1,4 @@
+import { ExceptionService } from './../../services/exception.service';
 import { TokenService } from './../../services/token.service';
 import { User } from './../../model/user';
 import { JpbxService } from './../../services/jpbx.service';
@@ -26,7 +27,8 @@ export class LoginComponent implements OnInit {
     private jpbx: JpbxService,
     private route: Router,
     private token: TokenService,
-    private userStore: UserService
+    private userStore: UserService,
+    private except: ExceptionService
     ) { }
 
   ngOnInit() {
@@ -34,6 +36,10 @@ export class LoginComponent implements OnInit {
       name: [],
       password: [],
     });
+    if(this.except.getMsg() != null){
+      this.loginErrorMessage = this.except.getMsg();
+      this.loginError = true;
+    }
   }
 
   onSubmit(){
