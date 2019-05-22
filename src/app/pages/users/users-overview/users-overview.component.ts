@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../../model/user';
 import { TokenService } from '../../../services/token.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'ngx-users-overview',
@@ -22,6 +23,7 @@ export class UsersOverviewComponent implements OnInit {
     pager: {
       perPage: 15
     },
+    mode: 'external',
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
       saveButtonContent: '<i class="nb-checkmark"></i>',
@@ -58,15 +60,15 @@ export class UsersOverviewComponent implements OnInit {
   constructor(
     private jpbx: JpbxService,
     private route: Router,
-    private token: TokenService
+    private token: TokenService,
+    private userEdit: UserService
     ) {}
   onDeleteConfirm(event): void {
     console.log(event);
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
-    }
+  }
+  edita(event){
+    this.userEdit.setUser(event.data);
+    this.route.navigate(['pages/users/edit']);
   }
   ngOnInit() {
     this.jpbx.getServer('user').subscribe(data => {

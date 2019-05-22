@@ -52,7 +52,7 @@ const routes: Routes = [{
   },
   {
     path: '',
-    redirectTo: 'users/users',
+    redirectTo: 'users',
     pathMatch: 'full',
   }, {
     path: '**',

@@ -8,12 +8,18 @@ export class UserService {
 
   constructor() { }
 
-  private user: User = null;
-
   public getUser(): User{
-    return this.user;
+    try {
+      return JSON.parse(localStorage.getItem('JPBXUSER')) || 'NADA';
+    } catch (e) {
+      console.error('Erro ao solicitar USUARIO localStorage', e);
+    }
   }
   public setUser(u: User) {
-    this.user = u;
+    try {
+      localStorage.setItem('JPBXUSER', JSON.stringify(u));
+    } catch (e) {
+      console.error('Erro ao salvar USUARIO localStorage', e);
+    }
   }
 }

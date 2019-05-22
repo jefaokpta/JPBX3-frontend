@@ -1,7 +1,7 @@
 import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
-  
+
   {
     title: 'E-commerce',
     icon: 'nb-e-commerce',
@@ -27,8 +27,8 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Usuários',
-        link: '/pages/users/users',
-      }
+        link: '/pages/users',
+      },
     ],
   },
   {

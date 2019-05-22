@@ -1,0 +1,15 @@
+<nb-card>
+  <nb-card-header>
+    <h4>Usuário {{user.name}}</h4>
+  </nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="form">
+      <div class="form-group row">
+        <label for="name" class="col-sm-1 col-form-label">Nome</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="name" formControlName="fullName" placeholder="Nome">
+        </div>
+      </div>
+    </form>
+  </nb-card-body>
+</nb-card>
