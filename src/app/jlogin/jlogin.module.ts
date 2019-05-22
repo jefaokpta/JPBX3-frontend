@@ -16,7 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
   ],
   declarations: [
-    ...routedComponents,
+    routedComponents,
     LoginComponent,
   ]
 })
